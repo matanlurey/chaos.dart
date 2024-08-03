@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the SequenceRandom class from the chaos library, for the Dart programming language.">
+  <title>SequenceRandom class - chaos library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">chaos</a></li>
+    <li><a href="../chaos/chaos-library.html">chaos.dart</a></li>
+    <li class="self-crumb">SequenceRandom class</li>
+  </ol>
+  <div class="self-name">SequenceRandom</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button" title="Toggle brightness">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        dark_mode
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        light_mode
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="chaos&#47;chaos-library-sidebar.html"
+    data-below-sidebar="chaos&#47;SequenceRandom-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">SequenceRandom</span> class 
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
+ 
+</h1></div>
+
+    
+<section class="desc markdown">
+  <p>A fixed number generator that produces a sequence of predetermined numbers.</p>
+<p>This class is useful for unit testing and debugging, as it allows you to
+tightly control the sequence of random numbers produced, but is typically
+not suitable for production use due to the lack of randomness.</p>
+<h2 id="end-of-sequence">End of sequence</h2>
+<p>If the sequence is exhausted, the generator will start over from the
+beginning. This means that the sequence <code>[0.1, 0.2, 0.3]</code> will produce the
+sequence <code>[0.1, 0.2, 0.3, 0.1, 0.2, 0.3, ...]</code> indefinitely.</p>
+<p>Optionally, <code>terminal</code> can be set to <code>true</code> to stop the generator from
+repeating the sequence. In this case, the generator will throw a
+<a href="https://api.dart.dev/stable/3.4.4/dart-core/StateError-class.html">StateError</a> when the sequence is exhausted.</p>
+<p>If no numbers are provided, the sequence will be empty, and all calls to
+<code>nextInt</code>, <code>nextDouble</code>, and <code>nextBool</code> will throw a <code>StateError</code>. This
+can be useful for testing cases where you expect no random numbers to be
+generated.</p>
+<h2 id="non-floating-point-values">Non-floating point values</h2>
+<p>Random numbers are typically defined as their cooresponding floating point
+values in the range [0, 1). In other words, if <code>0</code> is the next double, then
+<code>nextInt(20)</code> will return <code>0</code>, and <code>nextDouble()</code> will return <code>0.0</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>nextDouble()</code></th>
+<th><code>nextInt(20)</code></th>
+<th><code>nextBool()</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0.25</code></td>
+<td><code>5</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>0.50</code></td>
+<td><code>10</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>0.75</code></td>
+<td><code>15</code></td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<p>In other words, the sequence <code>[0.25, 0.50, 0.75]</code> will produce the sequence
+<code>[5, 10, 15]</code> when calling <code>nextInt(20)</code>, and the sequence
+<code>[false, true, true]</code> when calling <code>nextBool()</code>.</p>
+<h2 id="cloning-and-saving-state">Cloning and saving state</h2>
+<p>The state of the generator can be saved and restored using the <a href="../chaos/SequenceRandom/save.html">save</a> and
+<a href="../chaos/SequenceRandom/restore.html">restore</a> methods. The state is a byte array that can be used to restore the
+generator to the exact state it was in when the state was saved, including
+the sequence, the current index, and the terminal state.</p>
+<h2 id="example">Example</h2>
+<pre class="language-dart"><code class="language-dart">final sequence = SequenceRandom([0.1, 0.2, 0.3]);
+print(sequence.nextInt(10)); // 1
+print(sequence.nextInt(10)); // 2
+print(sequence.nextInt(10)); // 3
+</code></pre>
+</section>
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+  <dt>Implemented types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://api.dart.dev/stable/3.4.4/dart-math/Random-class.html">Random</a></li>
+    </ul>
+  </dd>
+        
+
+
+
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+
+    <dl class="constructor-summary-list">
+        <dt id="SequenceRandom" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.html">SequenceRandom</a></span><span class="signature">(<span class="parameter" id="-param-sequence"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.4.4/dart-core/double-class.html">double</a></span>&gt;</span></span> <span class="parameter-name">sequence</span>, </span><span class="parameter" id="-param-terminal">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">terminal</span> = <span class="default-value">false</span>}</span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> with the given sequence.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SequenceRandom.always" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.always.html">SequenceRandom.always</a></span><span class="signature">(<span class="parameter" id="always-param-value"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/double-class.html">double</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="always-param-terminal">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">terminal</span> = <span class="default-value">false</span>}</span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> that always repeats one number.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SequenceRandom.bools" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.bools.html">SequenceRandom.bools</a></span><span class="signature">(<span class="parameter" id="bools-param-sequence"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span>&gt;</span></span> <span class="parameter-name">sequence</span>, </span><span class="parameter" id="bools-param-terminal">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">terminal</span> = <span class="default-value">false</span>}</span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> with the given <code>bool</code> sequence.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SequenceRandom.ints" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.ints.html">SequenceRandom.ints</a></span><span class="signature">(<span class="parameter" id="ints-param-sequence"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">sequence</span>, </span><span class="parameter" id="ints-param-terminal">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">terminal</span> = <span class="default-value">false</span>}</span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> with the given <code>int</code> sequence.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SequenceRandom.linear" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.linear.html">SequenceRandom.linear</a></span><span class="signature">(<span class="parameter" id="linear-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/double-class.html">double</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="linear-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/double-class.html">double</a></span> <span class="parameter-name">end</span>, </span><span class="parameter" id="linear-param-length">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">length</span>, </span><span class="parameter" id="linear-param-terminal"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">terminal</span> = <span class="default-value">false</span>}</span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> with a linear distribution.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SequenceRandom.never" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.never.html">SequenceRandom.never</a></span><span class="signature">()</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> that always throws an error.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+        <dt id="SequenceRandom.uniform" class="callable">
+          <span class="name"><a href="../chaos/SequenceRandom/SequenceRandom.uniform.html">SequenceRandom.uniform</a></span><span class="signature">(<span class="parameter" id="uniform-param-size"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">size</span>, </span><span class="parameter" id="uniform-param-terminal">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">terminal</span> = <span class="default-value">false</span>}</span>)</span>
+        </dt>
+        <dd>
+          Creates a new instance of <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a> with an uniform distribution.
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="clone" class="callable">
+  <span class="name"><a href="../chaos/SequenceRandom/clone.html">clone</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../chaos/SequenceRandom-class.html">SequenceRandom</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Creates a new instance of the PRNG with the same internal state.
+  
+
+</dd>
+
+        <dt id="nextBool" class="callable">
+  <span class="name"><a href="../chaos/SequenceRandom/nextBool.html">nextBool</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Generates a random boolean value.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="nextDouble" class="callable">
+  <span class="name"><a href="../chaos/SequenceRandom/nextDouble.html">nextDouble</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/double-class.html">double</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Generates a non-negative random floating point value uniformly distributed
+in the range from 0.0, inclusive, to 1.0, exclusive.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="nextInt" class="callable">
+  <span class="name"><a href="../chaos/SequenceRandom/nextInt.html">nextInt</a></span><span class="signature">(<wbr><span class="parameter" id="nextInt-param-max"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">max</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Generates a random integer in the range [0, max).
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="restore" class="callable">
+  <span class="name"><a href="../chaos/SequenceRandom/restore.html">restore</a></span><span class="signature">(<wbr><span class="parameter" id="restore-param-state"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-typed_data/Uint8List-class.html">Uint8List</a></span> <span class="parameter-name">state</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Sets the internal state of the PRNG to the given value.
+  
+
+</dd>
+
+        <dt id="save" class="callable">
+  <span class="name"><a href="../chaos/SequenceRandom/save.html">save</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-typed_data/Uint8List-class.html">Uint8List</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  A representation of the internal state of the PRNG.
+  
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">chaos</a></li>
+    <li><a href="../chaos/chaos-library.html">chaos</a></li>
+    <li class="self-crumb">SequenceRandom class</li>
+</ol>
+
+
+    <h5>chaos library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    chaos
+      0.1.0
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+
