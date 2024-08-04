@@ -93,10 +93,12 @@ double nextDouble() {
   if (_sequence.isEmpty) {
     throw StateError(&#39;No random numbers available.&#39;);
   }
-  final i = _sequence[_index];
-  _index = (_index + 1) % _sequence.length;
-  if (_terminal &amp;&amp; _index == 0) {
-    throw StateError(&#39;Sequence exhausted.&#39;);
+  final i = _sequence[_index++];
+  if (_index == _sequence.length) {
+    if (_terminal) {
+      throw StateError(&#39;Sequence exhausted.&#39;);
+    }
+    _index = 0;
   }
   return i;
 }</code></pre>
@@ -133,7 +135,7 @@ double nextDouble() {
 <footer>
   <span class="no-break">
     chaos
-      0.1.0
+      0.1.0+1
   </span>
 
   
