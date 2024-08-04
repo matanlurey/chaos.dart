@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the clone method from the Xoshiro128PP class, for the Dart programming language.">
-  <title>clone method - Xoshiro128PP class - chaos library - Dart API</title>
+  <meta name="description" content="API docs for the save method from the PersistentRandom class, for the Dart programming language.">
+  <title>save method - PersistentRandom class - chaos library - Dart API</title>
 
 
   
@@ -30,10 +30,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">chaos</a></li>
     <li><a href="../../chaos/chaos-library.html">chaos.dart</a></li>
-    <li><a href="../../chaos/Xoshiro128PP-class.html">Xoshiro128PP</a></li>
-    <li class="self-crumb">clone method</li>
+    <li><a href="../../chaos/PersistentRandom-class.html">PersistentRandom</a></li>
+    <li class="self-crumb">save abstract method</li>
   </ol>
-  <div class="self-name">clone</div>
+  <div class="self-name">save</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -54,44 +54,34 @@
 <div
     id="dartdoc-main-content"
     class="main-content"
-    data-above-sidebar="chaos&#47;Xoshiro128PP-class-sidebar.html"
+    data-above-sidebar="chaos&#47;PersistentRandom-class-sidebar.html"
     data-below-sidebar="">
     <div>
-<h1><span class="kind-method">clone</span> method 
+<h1><span class="kind-method">save</span> abstract method 
 </h1></div>
 
     <section class="multi-line-signature">
       
-  <div>
-    <ol class="annotation-list">
-        <li>@<a href="https://api.dart.dev/stable/3.4.4/dart-core/override-constant.html">override</a></li>
-    </ol>
-  </div>
 
-<span class="returntype"><a href="../../chaos/Xoshiro128PP-class.html">Xoshiro128PP</a></span>
-<span class="name ">clone</span>(<wbr>)
+<span class="returntype"><a href="https://api.dart.dev/stable/3.4.4/dart-typed_data/Uint8List-class.html">Uint8List</a></span>
+<span class="name ">save</span>(<wbr>)
 
-      <div class="features"><span class="feature">override</span></div>
+      
 
     </section>
     
 <section class="desc markdown">
-  <p>Creates a new instance of the PRNG with the same internal state.</p>
-<p>The new instance should be identical to the original, and should produce
-the same sequence of random numbers as the original, but should be
-independent of the original instance.</p>
+  <p>A representation of the internal state of the PRNG.</p>
+<p>The value should be bytes representing the internal state of the PRNG, and
+compatible with the both the reverse operation (setter), and if the PRNG
+provides a <a href="../../chaos/SeedableGenerator-class.html">SeedableGenerator</a> implementation, the <code>fromSeed</code> method.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@override
-Xoshiro128PP clone() {
-  final clone = Xoshiro128PP._();
-  clone.restore(save());
-  return clone;
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">Uint8List save();</code></pre>
 </section>
 
 
@@ -108,12 +98,12 @@ Xoshiro128PP clone() {
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">chaos</a></li>
     <li><a href="../../chaos/chaos-library.html">chaos</a></li>
-    <li><a href="../../chaos/Xoshiro128PP-class.html">Xoshiro128PP</a></li>
-    <li class="self-crumb">clone method</li>
+    <li><a href="../../chaos/PersistentRandom-class.html">PersistentRandom</a></li>
+    <li class="self-crumb">save abstract method</li>
 </ol>
 
 
-    <h5>Xoshiro128PP class</h5>
+    <h5>PersistentRandom class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
   </div><!--/.sidebar-offcanvas-->
 

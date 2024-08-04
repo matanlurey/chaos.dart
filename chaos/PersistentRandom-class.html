@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the Xoshiro128P class from the chaos library, for the Dart programming language.">
-  <title>Xoshiro128P class - chaos library - Dart API</title>
+  <meta name="description" content="API docs for the PersistentRandom class from the chaos library, for the Dart programming language.">
+  <title>PersistentRandom class - chaos library - Dart API</title>
 
 
   
@@ -30,9 +30,9 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">chaos</a></li>
     <li><a href="../chaos/chaos-library.html">chaos.dart</a></li>
-    <li class="self-crumb">Xoshiro128P class</li>
+    <li class="self-crumb">PersistentRandom class</li>
   </ol>
-  <div class="self-name">Xoshiro128P</div>
+  <div class="self-name">PersistentRandom</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -54,41 +54,57 @@
     id="dartdoc-main-content"
     class="main-content"
     data-above-sidebar="chaos&#47;chaos-library-sidebar.html"
-    data-below-sidebar="chaos&#47;Xoshiro128P-class-sidebar.html">
+    data-below-sidebar="chaos&#47;PersistentRandom-class-sidebar.html">
     <div>
-<h1><span class="kind-class">Xoshiro128P</span> class 
-    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
+<h1><span class="kind-class">PersistentRandom</span> class 
+    <a href="https://dart.dev/language/class-modifiers#abstract" class="feature feature-abstract" title="This type can not be directly constructed.">abstract</a>
+    <a href="https://dart.dev/language/class-modifiers#interface" class="feature feature-interface" title="This class can only be implemented (not extended or mixed in).">interface</a>
  
 </h1></div>
 
     
 <section class="desc markdown">
-  <p>A 32-bit <a href="https://prng.di.unimi.it/xoshiro128plus.c">Xoshiro128+</a> pseudorandom number generator (PRNG).</p>
-<p>Xoshiro128+ is a fast and high-quality PRNG known for its speed and
-statistical properties. It excels at generating 32-bit integers and
-single-precision floating-point numbers.</p>
-<p>While suitable for most applications, it's worth noting that its lowest
-four bits exhibit low linear complexity. For applications that prioritize
-the highest quality randomness for 32-bit integers, consider using
-<a href="../chaos/Xoshiro128PP-class.html">Xoshiro128PP</a> instead.</p>
+  <p>A <a href="https://api.dart.dev/stable/3.4.4/dart-math/Random-class.html">Random</a> number generator where state can be saved and restored.</p>
+<p>While many PRNGs are seedable, such as the default <a href="https://api.dart.dev/stable/3.4.4/dart-math/Random-class.html">Random</a> class, they
+do not expose the internal state of the generator. This class is intended
+to be used with PRNGs that allow the internal state to be saved and
+restored, which can be useful for debugging, testing, and reproducibility,
+i.e. for savefile-based games.</p>
+<h2 id="example">Example</h2>
+<pre class="language-dart"><code class="language-dart">final xoroshiro = Xoshiro128P();
+
+// Geneate 100 random numbers.
+final numbers = List.generate(100, (_) =&gt; xoroshiro.nextInt(100));
+
+// Save the state of the PRNG.
+final state = xoroshiro.save();
+
+// ... later ...
+
+// Restore the state of the PRNG.
+xoroshiro.restore(state);
+</code></pre>
 </section>
 
 
     <section>
       <dl class="dl-horizontal">
         
-  <dt>Inheritance</dt>
+
+        
+  <dt>Implemented types</dt>
   <dd>
-    <ul class="gt-separated dark clazz-relationships">
-      <li><a href="https://api.dart.dev/stable/3.4.4/dart-core/Object-class.html">Object</a></li>
-        <li><a href="../chaos/Xoshiro128-class.html">Xoshiro128</a></li>
-      <li>Xoshiro128P</li>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://api.dart.dev/stable/3.4.4/dart-math/Random-class.html">Random</a></li>
     </ul>
   </dd>
-
-        
         
 
+          <dt>Implementers</dt>
+          <dd><ul class="comma-separated clazz-relationships">
+              <li><a href="../chaos/SequenceRandom-class.html">SequenceRandom</a></li>
+              <li><a href="../chaos/Xoshiro128-class.html">Xoshiro128</a></li>
+          </ul></dd>
 
 
         
@@ -102,21 +118,11 @@ the highest quality randomness for 32-bit integers, consider using
     <h2>Constructors</h2>
 
     <dl class="constructor-summary-list">
-        <dt id="Xoshiro128P" class="callable">
-          <span class="name"><a href="../chaos/Xoshiro128P/Xoshiro128P.html">Xoshiro128P</a></span><span class="signature">(<span class="parameter" id="-param-seed">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">seed</span>]</span>)</span>
+        <dt id="PersistentRandom" class="callable">
+          <span class="name"><a href="../chaos/PersistentRandom/PersistentRandom.html">PersistentRandom</a></span><span class="signature">()</span>
         </dt>
         <dd>
-          Creates a new instance of the <a href="../chaos/Xoshiro128P-class.html">Xoshiro128P</a> generator with the given
-<code>seed</code>.
-            <div class="constructor-modifier features">factory</div>
-        </dd>
-        <dt id="Xoshiro128P.fromSeed" class="callable">
-          <span class="name"><a href="../chaos/Xoshiro128P/Xoshiro128P.fromSeed.html">Xoshiro128P.fromSeed</a></span><span class="signature">(<span class="parameter" id="fromSeed-param-state"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span>&gt;</span></span> <span class="parameter-name">state</span></span>)</span>
-        </dt>
-        <dd>
-          Creates a new instance of the <a href="../chaos/Xoshiro128P-class.html">Xoshiro128P</a> generator with the given
-<code>state</code>.
-            <div class="constructor-modifier features">factory</div>
+          
         </dd>
     </dl>
   </section>
@@ -159,59 +165,33 @@ the highest quality randomness for 32-bit integers, consider using
     <h2>Methods</h2>
     <dl class="callables">
         <dt id="clone" class="callable">
-  <span class="name"><a href="../chaos/Xoshiro128P/clone.html">clone</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; <a href="../chaos/Xoshiro128P-class.html">Xoshiro128P</a></span>
+  <span class="name"><a href="../chaos/PersistentRandom/clone.html">clone</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../chaos/PersistentRandom-class.html">PersistentRandom</a></span>
   </span>
   
 
 </dt>
 <dd>
   Creates a new instance of the PRNG with the same internal state.
-  <div class="features"><span class="feature">override</span></div>
-
-</dd>
-
-        <dt id="jump" class="callable inherited">
-  <span class="name"><a href="../chaos/Xoshiro128/jump.html">jump</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
   
 
-</dt>
-<dd class="inherited">
-  Simulates 2^64 calls to <a href="../chaos/Xoshiro128/nextDouble.html">nextDouble</a> in constant time.
-  <div class="features"><span class="feature">inherited</span></div>
-
 </dd>
 
-        <dt id="longJump" class="callable inherited">
-  <span class="name"><a href="../chaos/Xoshiro128/longJump.html">longJump</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Simulates 2^96 calls to <a href="../chaos/Xoshiro128/nextDouble.html">nextDouble</a> in constant time.
-  <div class="features"><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="nextBool" class="callable">
-  <span class="name"><a href="../chaos/Xoshiro128P/nextBool.html">nextBool</a></span><span class="signature">(<wbr>)
+        <dt id="nextBool" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-math/Random/nextBool.html">nextBool</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/bool-class.html">bool</a></span>
   </span>
   
 
 </dt>
-<dd>
+<dd class="inherited">
   Generates a random boolean value.
-  <div class="features"><span class="feature">override</span></div>
+  <div class="features"><span class="feature">inherited</span></div>
 
 </dd>
 
         <dt id="nextDouble" class="callable inherited">
-  <span class="name"><a href="../chaos/Xoshiro128/nextDouble.html">nextDouble</a></span><span class="signature">(<wbr>)
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-math/Random/nextDouble.html">nextDouble</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/double-class.html">double</a></span>
   </span>
   
@@ -225,7 +205,7 @@ in the range from 0.0, inclusive, to 1.0, exclusive.
 </dd>
 
         <dt id="nextInt" class="callable inherited">
-  <span class="name"><a href="../chaos/Xoshiro128/nextInt.html">nextInt</a></span><span class="signature">(<wbr><span class="parameter" id="nextInt-param-max">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">max</span> = <span class="default-value">Uint32.max</span>]</span>)
+  <span class="name"><a href="https://api.dart.dev/stable/3.4.4/dart-math/Random/nextInt.html">nextInt</a></span><span class="signature">(<wbr><span class="parameter" id="nextInt-param-max"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">max</span></span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span>
   </span>
   
@@ -251,29 +231,29 @@ from 0, inclusive, to <code>max</code>, exclusive.
 
 </dd>
 
-        <dt id="restore" class="callable inherited">
-  <span class="name"><a href="../chaos/Xoshiro128/restore.html">restore</a></span><span class="signature">(<wbr><span class="parameter" id="restore-param-state"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-typed_data/Uint8List-class.html">Uint8List</a></span> <span class="parameter-name">state</span></span>)
+        <dt id="restore" class="callable">
+  <span class="name"><a href="../chaos/PersistentRandom/restore.html">restore</a></span><span class="signature">(<wbr><span class="parameter" id="restore-param-state"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-typed_data/Uint8List-class.html">Uint8List</a></span> <span class="parameter-name">state</span></span>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
-<dd class="inherited">
+<dd>
   Sets the internal state of the PRNG to the given value.
-  <div class="features"><span class="feature">inherited</span></div>
+  
 
 </dd>
 
-        <dt id="save" class="callable inherited">
-  <span class="name"><a href="../chaos/Xoshiro128/save.html">save</a></span><span class="signature">(<wbr>)
+        <dt id="save" class="callable">
+  <span class="name"><a href="../chaos/PersistentRandom/save.html">save</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.4.4/dart-typed_data/Uint8List-class.html">Uint8List</a></span>
   </span>
   
 
 </dt>
-<dd class="inherited">
+<dd>
   A representation of the internal state of the PRNG.
-  <div class="features"><span class="feature">inherited</span></div>
+  
 
 </dd>
 
@@ -331,7 +311,7 @@ from 0, inclusive, to <code>max</code>, exclusive.
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">chaos</a></li>
     <li><a href="../chaos/chaos-library.html">chaos</a></li>
-    <li class="self-crumb">Xoshiro128P class</li>
+    <li class="self-crumb">PersistentRandom class</li>
 </ol>
 
 
