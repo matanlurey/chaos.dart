@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the jump method from the Xoshiro128 class, for the Dart programming language.">
-  <title>jump method - Xoshiro128 class - chaos library - Dart API</title>
+  <meta name="description" content="API docs for the Xoshiro128 constructor from Class Xoshiro128 from the chaos library, for the Dart programming language.">
+  <title>Xoshiro128 constructor - Xoshiro128 - chaos library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">chaos</a></li>
     <li><a href="../../chaos/chaos-library.html">chaos.dart</a></li>
     <li><a href="../../chaos/Xoshiro128-class.html">Xoshiro128</a></li>
-    <li class="self-crumb">jump method</li>
+    <li class="self-crumb">Xoshiro128 factory constructor</li>
   </ol>
-  <div class="self-name">jump</div>
+  <div class="self-name">Xoshiro128</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -51,36 +51,33 @@
 </header>
 <main>
 
-<div
-    id="dartdoc-main-content"
-    class="main-content"
-    data-above-sidebar="chaos&#47;Xoshiro128-class-sidebar.html"
-    data-below-sidebar="">
-    <div>
-<h1><span class="kind-method">jump</span> method 
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="chaos&#47;Xoshiro128-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-constructor">Xoshiro128</span> constructor 
 </h1></div>
 
     <section class="multi-line-signature">
       
-
-<span class="returntype">void</span>
-<span class="name ">jump</span>(<wbr>)
-
-      
-
+      <span class="name ">Xoshiro128</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-seed">[<span class="type-annotation"><a href="https://api.dart.dev/stable/3.4.4/dart-core/int-class.html">int</a></span> <span class="parameter-name">seed</span>]</span></li>
+</ol>)
     </section>
+
     
 <section class="desc markdown">
-  <p>Simulates 2^64 calls to <a href="../../chaos/Xoshiro128/nextDouble.html">nextDouble</a> in constant time.</p>
+  <p>Creates a new <a href="../../chaos/Xoshiro128-class.html">Xoshiro128</a> instance.</p>
+<p>If <code>seed</code> is not provided, a random seed is generated using <a href="../../chaos/Xoshiro128/randomSeed.html">randomSeed</a>.</p>
+<p>The default implementation is <a href="../../chaos/Xoshiro128P-class.html">Xoshiro128P</a>.</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void jump() {
-  return _applyJump(const [0x8764000b, 0xf542d2d3, 0x6fa035c3, 0x77f2db5b]);
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">factory Xoshiro128([int seed]) = Xoshiro128P;</code></pre>
 </section>
 
 
@@ -98,16 +95,16 @@
     <li><a href="../../index.html">chaos</a></li>
     <li><a href="../../chaos/chaos-library.html">chaos</a></li>
     <li><a href="../../chaos/Xoshiro128-class.html">Xoshiro128</a></li>
-    <li class="self-crumb">jump method</li>
+    <li class="self-crumb">Xoshiro128 factory constructor</li>
 </ol>
 
 
     <h5>Xoshiro128 class</h5>
     <div id="dartdoc-sidebar-left-content"></div>
-  </div><!--/.sidebar-offcanvas-->
+  </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-</div><!--/.sidebar-offcanvas-->
+  </div><!--/.sidebar-offcanvas-->
 
 </main>
 
