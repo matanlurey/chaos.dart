@@ -1,8 +1,0 @@
-LIBRARY   xoshiro128plusplus
-EXPORTS
-    next
-    seed
-    rotl
-    jump
-    long_jump
-
